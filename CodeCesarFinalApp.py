@@ -20,7 +20,10 @@ if descision == str(1) :
 
     # Starting Program
     print ("\n                            CESAR ENCRYPTING TOOL")
-    InitialWords = input("\n Que doit on encrypter ? (only lower case character) ")
+    InitialWords = str(input("\n Que doit on encrypter ? "))
+    # converting to lower case
+    InitialWords = InitialWords.lower() 
+
     EncryptingKey = int(input("\n Quelle est la clé d'encryptage ? "))
 
     # Encrypting
@@ -32,9 +35,14 @@ if descision == str(1) :
         for Modifying in range (len(Alphabet)) :
             if EncryptingWord[IndexWord] == Alphabet[IndexLetter] :
                 MoovingInList = int(IndexLetter) + int(EncryptingKey)
+                # si l'index est sort de l'alphabet, le remet au debut 
+                if MoovingInList > 26 :
+                    MoovingInList -= 26
+                
                 EncryptingWord[IndexWord] = Alphabet[MoovingInList]
                 MoovingInList = 0
                 break
+
             else : 
                 IndexLetter += 1
         IndexLetter = 0
